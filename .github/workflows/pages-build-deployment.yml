@@ -1,0 +1,28 @@
+name: GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+
+      - name: Build and Deploy
+        run: |
+          # Add your build commands here if needed
+          echo "Deploying site..."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
